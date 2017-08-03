@@ -35,6 +35,10 @@ module.exports = {
       'optionalDependencies': ['test/unit/index.js']
     }],
 
+    "arrow-body-style": [0, "never"],
+
+    "no-param-reassign": [0, {"props": false}],
+
     "comma-dangle": ["error", {
         "arrays": "only-multiline",
         "objects": "only-multiline",
