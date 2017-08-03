@@ -13,12 +13,12 @@ export default {
         return {
             links: [
                 {
-                    name: 'About',
-                    to: 'about'
-                },
-                {
                     name: 'Hello',
                     to: 'hello'
+                },
+                {
+                    name: 'About',
+                    to: 'about'
                 }
             ]
         };
