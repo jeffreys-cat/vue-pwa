@@ -25,6 +25,7 @@ module.exports = {
   // add your custom rules here
   'rules': {
     // don't require .vue extension when importing
+    "indent": ["error", 4, { "SwitchCase": 1 }],
     'import/extensions': ['error', 'always', {
       'js': 'never',
       'vue': 'never'
@@ -32,6 +33,14 @@ module.exports = {
     // allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {
       'optionalDependencies': ['test/unit/index.js']
+    }],
+
+    "comma-dangle": ["error", {
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
+        "imports": "only-multiline",
+        "exports": "only-multiline",
+        "functions": "ignore"
     }],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
