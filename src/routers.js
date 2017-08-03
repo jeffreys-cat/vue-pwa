@@ -4,7 +4,12 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Hello from './views/Hello.vue';
 import NotFound from './views/NotFound.vue';
-import About from './views/About.vue';
+// import About from './views/About.vue';
+const About = (resolve) => {
+    require.ensure(['./views/About.vue'], () => {
+        resolve(require('./views/About.vue'));
+    });
+};
 
 
 Vue.use(Router);
