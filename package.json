@@ -4,11 +4,10 @@
   "description": "a vue example",
   "main": "index.js",
   "repository": "git@github.com:colordove/vue-example.git",
-  "author": "HuJian <624598206@qq.com>",
+  "author": "HuJian <hujan201@gmail.com>",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 8080",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
-    "unit": "karma start test/unit/karma.conf.js --single-run",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "license": "MIT",
