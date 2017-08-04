@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const helpers = require('./helpers');
 const path = require('path');
 
@@ -74,20 +75,39 @@ module.exports = {
                 test: /\.(scss|sass)$/,
                 exclude: helpers.root('node_modules'),
                 loader: 'raw-loader!sass-loader'
-            },
+            }
         ]
     },
     plugins: [
 
+        // Common chunks
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             chunks: ['vendor']
         }),
 
+        // array id
+        new webpack.optimize.OccurrenceOrderPlugin(),
+
+        // auto inject
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html',
             inject: true
+        }),
+
+        // bundle analysis
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'server',
+            analyzerHost: '127.0.0.1',
+            analyzerPort: 8888,
+            reportFilename: 'report.html',
+            defaultSizes: 'parsed',
+            openAnalyzer: true,
+            generateStatsFile: false,
+            statsFilename: 'stats.json',
+            statsOptions: null,
+            logLevel: 'info'
         })
 
     ]
