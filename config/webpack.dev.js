@@ -15,7 +15,12 @@ module.exports = webpackMerge(commonConfig, {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                url: JSON.stringify("http://www.apitest.com/")
+            }
+        })
     ],
 
     devServer: {

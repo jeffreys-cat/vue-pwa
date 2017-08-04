@@ -18,17 +18,16 @@ module.exports = webpackMerge(commonConfig, {
 
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.optimize.UglifyJsPlugin({ // https://github.com/angular/angular/issues/10618
+        new webpack.DefinePlugin({
+            'process.env': {
+                url: JSON.stringify("http://www.api.com/")
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             },
             sourceMap: true
-        }),
-
-        new webpack.DefinePlugin({
-            'process.env': {
-                'ENV': JSON.stringify(ENV)
-            }
         })
     ]
 });

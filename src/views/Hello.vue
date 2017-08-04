@@ -26,6 +26,7 @@ export default {
     },
     mounted() {
         this.getCounterFromStore();
+        console.log(process.env);
     },
     methods: {
         increment() {
