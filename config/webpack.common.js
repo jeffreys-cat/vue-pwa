@@ -71,16 +71,16 @@ module.exports = {
             // },
             // src/scss合并到js中
             {
-                test: /\.(scss|sass)$/, 
-                exclude: helpers.root('node_modules'), 
+                test: /\.(scss|sass)$/,
+                exclude: helpers.root('node_modules'),
                 loader: 'raw-loader!sass-loader'
             },
         ]
     },
     plugins: [
-        
+
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendoe',
+            name: 'vendor',
             chunks: ['vendor']
         }),
 
