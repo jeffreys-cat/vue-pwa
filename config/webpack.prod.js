@@ -29,13 +29,6 @@ module.exports = webpackMerge(commonConfig, {
             'process.env': {
                 'ENV': JSON.stringify(ENV)
             }
-        }),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true,
-            debug: false,
-            htmlLoader: {
-                minimize: false // workaround for ng2
-            }
         })
     ]
 });
