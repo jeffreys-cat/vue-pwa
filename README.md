@@ -3,8 +3,11 @@ This repo is create for resume...
 
 Vue + Vue-router + Vuex + Scss + Webapck
 
-## Run
+## Install
 <pre><code>yarn install</code></pre>
+
+## Run
+<pre><code>yarn start</code></pre>
 
 ## Build
 <pre><code>yarn build</code></pre>
