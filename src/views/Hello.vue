@@ -24,9 +24,11 @@ export default {
             'getCounter'
         ])
     },
-    mounted() {
+    created() {
         this.getCounterFromStore();
         console.log(process.env);
+    },
+    mounted() {
     },
     methods: {
         increment() {
