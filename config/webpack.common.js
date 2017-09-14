@@ -2,14 +2,15 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const helpers = require('./helpers');
 const path = require('path');
+
+// const ENV = process.env.NODE_ENV ? process.env.ENV : 'production';
 
 const extractSass = new ExtractTextPlugin('[name].[hash].css');
 const extractCss = new ExtractTextPlugin('[name].[hash].css');
 
-module.exports = {
+const commonConfig = {
     entry: {
         app: './src/main.js'
     },
@@ -94,21 +95,9 @@ module.exports = {
             filename: 'index.html',
             template: 'index.html',
             inject: true
-        }),
-
-        // bundle analysis
-        new BundleAnalyzerPlugin({
-            analyzerMode: 'server',
-            analyzerHost: '127.0.0.1',
-            analyzerPort: 8888,
-            reportFilename: 'report.html',
-            defaultSizes: 'parsed',
-            openAnalyzer: true,
-            generateStatsFile: false,
-            statsFilename: 'stats.json',
-            statsOptions: null,
-            logLevel: 'info'
         })
 
     ]
 }
+
+module.exports = commonConfig;
