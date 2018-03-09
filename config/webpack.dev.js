@@ -25,6 +25,7 @@ if (process.env.NODE_ENV === 'bundle-report') {
 
 
 module.exports = webpackMerge(commonConfig, {
+    mode: 'development',
     devtool: 'cheap-module-eval-source-map',
 
     output: {

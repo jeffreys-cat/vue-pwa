@@ -5,6 +5,7 @@ const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
 
 module.exports = webpackMerge(commonConfig, {
+    mode: 'production',
     devtool: 'source-map',
 
     output: {
@@ -13,19 +14,15 @@ module.exports = webpackMerge(commonConfig, {
         filename: '[name].[hash].js',
         chunkFilename: '[id].[hash].chunk.js'
     },
-
+    optimization: {
+        minimize: true
+    },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 url: JSON.stringify("http://www.api.com/")
             }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            sourceMap: true
         })
     ]
 });
