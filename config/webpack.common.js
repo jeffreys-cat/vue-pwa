@@ -22,6 +22,12 @@ const commonConfig = {
             '@': helpers.root('src')
         }
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            name: true
+        },
+    },
     module: {
         rules: [
             {
@@ -62,15 +68,6 @@ const commonConfig = {
                 include: [helpers.root('src/assets')],
                 loaders: ['style-loader', 'css-loader']
             },
-            // src/scss单独打包
-            // {
-            //     test: /\.scss$/,
-            //     exclude: [helpers.root('node_modules')],
-            //     use: extractSass.extract({
-            //         fallback: 'style-loader',
-            //         use: ['css-loader', 'sass-loader']
-            //     })
-            // },
             // src/scss合并到js中
             {
                 test: /\.(scss|sass)$/,
@@ -80,13 +77,6 @@ const commonConfig = {
         ]
     },
     plugins: [
-
-        // Common chunks
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            chunks: ['vendor']
-        }),
-
         // array id
         new webpack.optimize.OccurrenceOrderPlugin(),
 
@@ -96,7 +86,6 @@ const commonConfig = {
             template: 'index.html',
             inject: true
         })
-
     ]
 }
 
