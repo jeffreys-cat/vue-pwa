@@ -3,8 +3,8 @@ import App from './App';
 import router from './routers';
 import Vuex from 'vuex';
 import store from './store/store';
-
-// Vue.config.productionTip = false;
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
 new Vue({
   el: '#app',
   router,
