@@ -21,7 +21,8 @@ module.exports = webpackMerge(commonConfig, {
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
-                url: JSON.stringify("http://www.api.com/")
+                url: JSON.stringify("http://www.api.com/"),
+                environment: JSON.stringify('prod')
             }
         })
     ]

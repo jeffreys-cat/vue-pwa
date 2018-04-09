@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="home">
         <ul class="links">
             <li v-for="(link, index) in links" :key="index" @click="goLink(link)">{{link.name}}</li>
         </ul>
@@ -32,6 +32,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .home {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: #4DBA87;
+    }
     .links {
         li:hover {
             cursor: pointer;

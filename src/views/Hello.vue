@@ -26,7 +26,6 @@ export default {
     },
     created() {
         this.getCounterFromStore();
-        console.log(process.env);
     },
     mounted() {
     },

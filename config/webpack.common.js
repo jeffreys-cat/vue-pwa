@@ -86,7 +86,27 @@ const commonConfig = {
                 to: './'
             },
             {
-                from: './static/img/icons/**',
+                from: './static/img/icons/apple-touch-icon-120x120-precomposed.png',
+                to: './'
+            },
+            {
+                from: './static/img/icons/apple-touch-icon-120x120.png',
+                to: './'
+            },
+            {
+                from: './static/img/icons/apple-touch-icon-152x152-precomposed.png',
+                to: './'
+            },
+            {
+                from: './static/img/icons/apple-touch-icon-152x152.png',
+                to: './'
+            },
+            {
+                from: './static/img/icons/apple-touch-icon-180x180-precomposed.png',
+                to: './'
+            },
+            {
+                from: './static/img/icons/apple-touch-icon-180x180.png',
                 to: './'
             }
         ]),
