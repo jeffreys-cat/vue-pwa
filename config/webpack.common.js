@@ -4,6 +4,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const helpers = require('./helpers');
 const path = require('path');
+const fs = require('fs');
+var OfflinePlugin = require('offline-plugin');
 
 // const ENV = process.env.NODE_ENV ? process.env.ENV : 'production';
 
@@ -29,8 +31,7 @@ const commonConfig = {
         },
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(js|vue)$/,
                 loader: 'eslint-loader',
                 enforce: 'pre',
@@ -80,11 +81,38 @@ const commonConfig = {
         // array id
         new webpack.optimize.OccurrenceOrderPlugin(),
 
+        new CopyWebpackPlugin([{
+                from: './static/**',
+                to: './'
+            },
+            {
+                from: './static/img/icons/**',
+                to: './'
+            }
+        ]),
+
         // auto inject
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html',
             inject: true
+            // serviceWorkerLoader: `<script>${fs.readFileSync(path.join(__dirname,
+            //     './service-worker.js'), 'utf-8')}</script>`
+        }),
+        // for PWA
+        new OfflinePlugin({
+            publicPath: '/',
+            safeToUseOptionalCaches: true,
+            externals: [
+                '/'
+            ],
+            caches: 'all',
+            AppCache: false,
+            ServiceWorker: {
+                events: true,
+                navigateFallbackURL: '/',
+                minify: false
+            }
         })
     ]
 }
