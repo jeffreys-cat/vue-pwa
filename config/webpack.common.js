@@ -81,6 +81,16 @@ const commonConfig = {
         // array id
         new webpack.optimize.OccurrenceOrderPlugin(),
 
+        new CopyWebpackPlugin([{
+                from: './static/**',
+                to: './'
+            },
+            {
+                from: './static/img/icons/**',
+                to: './'
+            }
+        ]),
+
         // auto inject
         new HtmlWebpackPlugin({
             filename: 'index.html',
@@ -92,12 +102,14 @@ const commonConfig = {
         // for PWA
         new OfflinePlugin({
             publicPath: '/',
-            caches: 'all',
             safeToUseOptionalCaches: true,
             externals: [
                 '/'
             ],
+            caches: 'all',
+            AppCache: false,
             ServiceWorker: {
+                events: true,
                 navigateFallbackURL: '/',
                 minify: false
             }
