@@ -3,6 +3,7 @@ import App from './App';
 import router from './routers';
 import Vuex from 'vuex';
 import store from './store/store';
+import 'babel-polyfill';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 OfflinePluginRuntime.install({
     onUpdating: () => {
@@ -11,7 +12,7 @@ OfflinePluginRuntime.install({
     onUpdateReady: () => {
         console.log('SW Event:', 'onUpdateReady');
         // Tells to new SW to take control immediately
-        runtime.applyUpdate();
+        OfflinePluginRuntime.applyUpdate();
     },
     onUpdated: () => {
         console.log('SW Event:', 'onUpdated');
