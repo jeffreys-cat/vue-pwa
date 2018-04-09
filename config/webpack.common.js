@@ -92,17 +92,7 @@ const commonConfig = {
         // for PWA
         new OfflinePlugin({
             publicPath: '/',
-            caches: {
-                main: [
-                    'app.*.js',
-                ],
-                additional: [
-                    ':externals:'
-                ],
-                optional: [
-                    ':rest:'
-                ]
-            },
+            caches: 'all',
             safeToUseOptionalCaches: true,
             externals: [
                 '/'
@@ -110,11 +100,6 @@ const commonConfig = {
             ServiceWorker: {
                 navigateFallbackURL: '/',
                 minify: false
-            },
-            AppCache: {
-                FALLBACK: {
-                    '/': '/offline-page.html'
-                }
             }
         })
     ]
