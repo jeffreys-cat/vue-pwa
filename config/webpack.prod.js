@@ -10,7 +10,7 @@ module.exports = webpackMerge(commonConfig, {
 
     output: {
         path: helpers.root('dist'),
-        publicPath: '/',
+        publicPath: '/vue-pwa/',
         filename: '[name].[hash].js',
         chunkFilename: '[id].[hash].chunk.js'
     },

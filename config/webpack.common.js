@@ -121,7 +121,7 @@ const commonConfig = {
         }),
         // for PWA
         new OfflinePlugin({
-            publicPath: '/',
+            publicPath: '/vue-pwa/',
             safeToUseOptionalCaches: true,
             externals: [
                 '/'
