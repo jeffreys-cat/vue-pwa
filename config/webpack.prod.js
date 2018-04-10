@@ -3,6 +3,7 @@ const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
     mode: 'production',
@@ -24,6 +25,7 @@ module.exports = webpackMerge(commonConfig, {
                 url: JSON.stringify("http://www.api.com/"),
                 environment: JSON.stringify('prod')
             }
-        })
+        }),
+        new BaseHrefWebpackPlugin({ baseHref: '/vue-pwa/' })
     ]
 });
