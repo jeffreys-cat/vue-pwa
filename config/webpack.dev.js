@@ -39,7 +39,8 @@ module.exports = webpackMerge(commonConfig, {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
-                url: JSON.stringify("http://www.apitest.com/")
+                url: JSON.stringify('http://www.apitest.com/'),
+                environment: JSON.stringify('dev')
             }
         })
     ],

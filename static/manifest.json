@@ -27,8 +27,13 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/index.html",
+    "start_url": "/vue-pwa/index.html",
     "display": "standalone",
-    "background_color": "RGBA(77, 168, 239, 1.00)",
-    "theme_color": "#4DBA87"
+    "background_color": "#42A5F5",
+    "theme_color": "#4DBA87",
+    "permissions": {
+        "desktop-notification": {
+            "description": "Needed for creating system notifications."
+        }
+    }
 }

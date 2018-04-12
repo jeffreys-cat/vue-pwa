@@ -3,6 +3,7 @@ const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
     mode: 'production',
@@ -10,7 +11,7 @@ module.exports = webpackMerge(commonConfig, {
 
     output: {
         path: helpers.root('dist'),
-        publicPath: '/',
+        publicPath: '/vue-pwa/',
         filename: '[name].[hash].js',
         chunkFilename: '[id].[hash].chunk.js'
     },
@@ -21,8 +22,10 @@ module.exports = webpackMerge(commonConfig, {
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
-                url: JSON.stringify("http://www.api.com/")
+                url: JSON.stringify("http://www.api.com/"),
+                environment: JSON.stringify('prod')
             }
-        })
+        }),
+        new BaseHrefWebpackPlugin({ baseHref: '/vue-pwa/' })
     ]
 });

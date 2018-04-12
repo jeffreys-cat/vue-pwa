@@ -9,40 +9,41 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import { mapGetters } from 'vuex';
 
-export default {
-    data() {
+@Component
+export default class Hello extends Vue {
+    pageName = 'Hello';
+    counter = 0;
+
+    get mapGetters() {
         return {
-            pageName: 'Hello',
-            counter: 0
-        };
-    },
-    computed: {
-        ...mapGetters([
-            'getCounter'
-        ])
-    },
+            ...mapGetters([
+                'getCounter'
+            ])
+        }
+    }
     created() {
         this.getCounterFromStore();
-        console.log(process.env);
-    },
+    }
     mounted() {
-    },
-    methods: {
-        increment() {
-            this.$store.dispatch('increment');
-            this.getCounterFromStore();
-        },
-        decrement() {
-            this.$store.dispatch('decrement');
-            this.getCounterFromStore();
-        },
-        getCounterFromStore() {
-            this.counter = this.$store.getters.getCounter;
-        }
+    }
 
+    increment() {
+        this.$store.dispatch('increment');
+        this.getCounterFromStore();
+    };
+
+    decrement() {
+        this.$store.dispatch('decrement');
+        this.getCounterFromStore();
+    };
+
+    getCounterFromStore() {
+        this.counter = this.$store.getters.getCounter;
     }
 };
 </script>
