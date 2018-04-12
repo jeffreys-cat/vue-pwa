@@ -6,27 +6,30 @@
         <router-view></router-view>
     </div>
 </template>
-<script>
-export default {
-    name: 'hello',
-    data() {
-        return {
-            links: [
-                {
-                    name: 'Hello',
-                    to: 'hello'
-                },
-                {
-                    name: 'About',
-                    to: 'about'
-                }
-            ]
-        };
-    },
-    methods: {
-        goLink(link) {
-            this.$router.push(link.to);
+
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+interface Link {
+    name: string;
+    to: string;
+}
+
+@Component
+export default class Home extends Vue {
+    name = 'hello';
+    links: Array<Link> = [
+        {
+            name: 'Hello',
+            to: 'hello'
+        },
+        {
+            name: 'About',
+            to: 'about'
         }
+    ];
+    goLink(link: Link) {
+        this.$router.push(link.to);
     }
 };
 </script>

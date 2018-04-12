@@ -5,9 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const helpers = require('./helpers');
 const path = require('path');
 const fs = require('fs');
-var OfflinePlugin = require('offline-plugin');
-
-// const ENV = process.env.NODE_ENV ? process.env.ENV : 'production';
+const OfflinePlugin = require('offline-plugin');
 
 const extractSass = new ExtractTextPlugin('[name].[hash].css');
 const extractCss = new ExtractTextPlugin('[name].[hash].css');
@@ -29,15 +27,7 @@ const commonConfig = {
         },
     },
     module: {
-        rules: [{
-                test: /\.(js|vue)$/,
-                loader: 'eslint-loader',
-                enforce: 'pre',
-                include: [helpers.root('src'), helpers.root('test')],
-                options: {
-                    formatter: require('eslint-friendly-formatter')
-                }
-            },
+        rules: [
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
@@ -103,8 +93,6 @@ const commonConfig = {
             filename: 'index.html',
             template: 'index.html',
             inject: true
-            // serviceWorkerLoader: `<script>${fs.readFileSync(path.join(__dirname,
-            //     './service-worker.js'), 'utf-8')}</script>`
         }),
         // for PWA
         new OfflinePlugin({
