@@ -14,14 +14,12 @@ const extractCss = new ExtractTextPlugin('[name].[hash].css');
 
 const commonConfig = {
     entry: {
-        app: './src/main.js'
+        app: './src/main.ts'
     },
     resolve: {
-        extensions: ['.js', '.vue', 'json'],
+        extensions: ['*', '.ts', '.tsx', '.js', '.vue', 'json'],
         alias: {
-            'assets': helpers.root('src', 'assets'),
-            'vue$': 'vue/dist/vue.esm.js',
-            '@': helpers.root('src')
+            vue: 'vue/dist/vue.js'
         }
     },
     optimization: {
@@ -43,6 +41,20 @@ const commonConfig = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
+            },
+            {
+                test: /\.ts$/,
+                exclude: [helpers.root('node_modules'), helpers.root('src', 'main.ts')],
+                enforce: 'pre',
+                loader: 'tslint-loader'
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: helpers.root('node_modules'),
+                options: {
+                    appendTsSuffixTo: [/\.vue$/],
+                }
             },
             {
                 test: /\.js$/,
@@ -82,10 +94,9 @@ const commonConfig = {
         new webpack.optimize.OccurrenceOrderPlugin(),
 
         new CopyWebpackPlugin([{
-                from: './static/**',
-                to: './'
-            }
-        ]),
+            from: './static/**',
+            to: './'
+        }]),
 
         // auto inject
         new HtmlWebpackPlugin({

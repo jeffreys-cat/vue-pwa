@@ -1,6 +1,10 @@
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 
-export default function registerServiceWorker() {
+interface BeforeInstallPromptEvent extends Event {
+    userChoice: Promise<EventListenerObject>;
+}
+
+export const registerServiceWorker = (): void => {
     if (process.env.environment === 'prod') {
         OfflinePluginRuntime.install({
             onUpdating: () => {
@@ -19,8 +23,10 @@ export default function registerServiceWorker() {
                 console.log('SW Event:', 'onUpdateFailed');
             }
         });
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.userChoice.then((choiceResult) => {
+
+        // 用户添加主屏操作
+        window.addEventListener('beforeinstallprompt', (e: Event) => {
+            (<BeforeInstallPromptEvent>e).userChoice.then((choiceResult: any) => {
                 console.log(choiceResult.outcome);
                 if (choiceResult.outcome === 'dismissed') {
                     console.log('User cancelled home screen install');
@@ -30,7 +36,7 @@ export default function registerServiceWorker() {
             });
         });
     } else {
-        console.info(`Environment: ${process.env.environment}, ServiceWorker will not register`);
+        console.log(`Environment: ${process.env.environment}, ServiceWorker will not register`);
     }
-}
+};
 
