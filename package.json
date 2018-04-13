@@ -44,7 +44,9 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
+    "rxjs": "^5.5.10",
     "vue": "^2.5.13",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^6.0.0",
