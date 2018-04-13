@@ -1,7 +1,8 @@
-# vue-example
-This repo is create for resume...
+# vue-pwa-typescript
+A simple vue example with typescript, support pwa by webpack `offline plugin`.
 
-Vue + Vue-router + Vuex + Scss + Webapck
+## SkillSet
+Vue + Vue-Router + Vuex + Scss + Webpack4 + TypeScript + RxJS
 
 ## Install
 <pre><code>yarn install</code></pre>
@@ -15,4 +16,12 @@ Vue + Vue-router + Vuex + Scss + Webapck
 ## Lint
 <pre><code>yarn lint</code></pre>
 
+## Notices
+1. DEV Environment ServiceWorker Will Not Working.
 
+## Some Tips In Config
+1. Webpack extensions array must include `.tsx`, otherwise `Can't Resolve File` Error will Occur.
+
+2. Tsconfig module must be set to `esnext`, otherwise dynamic import will not working.
+
+3. Webpack ts-loader must has option `appendTsSuffixTo: [/\.vue$/]`, And import vue file must has `.vue` extension, otherwise, vue file will not be recognized by typescript.
