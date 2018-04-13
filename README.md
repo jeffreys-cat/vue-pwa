@@ -13,11 +13,10 @@ Vue + Vue-Router + Vuex + Scss + Webpack4 + TypeScript + RxJS
 ## Build
 <pre><code>yarn build</code></pre>
 
-## Lint
-<pre><code>yarn lint</code></pre>
-
 ## Notices
 1. DEV Environment ServiceWorker Will Not Working.
+
+2. `Base href` settings: now is my nginx path `vue-pwa`, Build Application must change all of it. it's in `webpack.common.js OfflinePlugin publicPath`、 `webpack.prod.js output publicPath` & `BaseHrefWebpackPlugin`, in `manifest.json` file, `start_url` also has it.
 
 ## Some Tips In Config
 1. Webpack extensions array must include `.tsx`, otherwise `Can't Resolve File` Error will Occur.
