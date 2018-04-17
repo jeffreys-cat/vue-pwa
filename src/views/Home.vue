@@ -41,7 +41,7 @@ export default class Home extends Vue {
         left: 0;
         bottom: 0;
         right: 0;
-        background-color: #4DBA87;
+        // background-color: #4DBA87;
     }
     .links {
         li:hover {

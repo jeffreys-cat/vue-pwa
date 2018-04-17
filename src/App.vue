@@ -17,6 +17,8 @@ export default class App extends Vue {
 
 <style>
 @import './assets/reset.scss';
+/* @import 'vant/lib/vant-css/index.css'; */
+
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;

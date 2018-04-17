@@ -6,6 +6,7 @@ const helpers = require('./helpers');
 const path = require('path');
 const fs = require('fs');
 const OfflinePlugin = require('offline-plugin');
+const tsImportPluginFactory = require('ts-import-plugin')
 
 const extractSass = new ExtractTextPlugin('[name].[hash].css');
 const extractCss = new ExtractTextPlugin('[name].[hash].css');
@@ -17,7 +18,7 @@ const commonConfig = {
     resolve: {
         extensions: ['*', '.ts', '.tsx', '.js', '.vue', 'json'],
         alias: {
-            vue: 'vue/dist/vue.js'
+            vue$: 'vue/dist/vue.js'
         }
     },
     optimization: {
@@ -44,34 +45,30 @@ const commonConfig = {
                 exclude: helpers.root('node_modules'),
                 options: {
                     appendTsSuffixTo: [/\.vue$/],
+                    transpileOnly: true,
+                    getCustomTransformers: () => ({
+                        before: [ tsImportPluginFactory({
+                            libraryName: 'vant',
+                            libraryDirectory: 'lib',
+                            style: 'css'
+                        })]
+                    }),
+                    compilerOptions: {
+                        module: 'es2015'
+                    }
                 }
-            },
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                include: helpers.root('src'),
-                exclude: /node_modules/
             },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                 loader: 'file-loader?name=assets/[name].[hash].[ext]'
             },
-            // vendor
             {
                 test: /\.css$/,
-                exclude: [helpers.root('src')],
-                use: extractCss.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader']
-                })
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" }
+                ]
             },
-            // src/**/*.css
-            {
-                test: /\.css$/,
-                include: [helpers.root('src/assets')],
-                loaders: ['style-loader', 'css-loader']
-            },
-            // src/scss合并到js中
             {
                 test: /\.(scss|sass)$/,
                 exclude: helpers.root('node_modules'),
