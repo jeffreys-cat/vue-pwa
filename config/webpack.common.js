@@ -6,7 +6,6 @@ const helpers = require('./helpers');
 const path = require('path');
 const fs = require('fs');
 const OfflinePlugin = require('offline-plugin');
-const tsImportPluginFactory = require('ts-import-plugin')
 
 const extractSass = new ExtractTextPlugin('[name].[hash].css');
 const extractCss = new ExtractTextPlugin('[name].[hash].css');
@@ -44,18 +43,7 @@ const commonConfig = {
                 loader: 'ts-loader',
                 exclude: helpers.root('node_modules'),
                 options: {
-                    appendTsSuffixTo: [/\.vue$/],
-                    transpileOnly: true,
-                    getCustomTransformers: () => ({
-                        before: [ tsImportPluginFactory({
-                            libraryName: 'vant',
-                            libraryDirectory: 'lib',
-                            style: 'css'
-                        })]
-                    }),
-                    compilerOptions: {
-                        module: 'es2015'
-                    }
+                    appendTsSuffixTo: [/\.vue$/]
                 }
             },
             {
