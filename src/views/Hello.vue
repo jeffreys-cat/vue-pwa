@@ -15,9 +15,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { mapGetters } from 'vuex';
 // Button
-import Button from 'vant/lib/button';
-import 'vant/lib/vant-css/base.css';
-import 'vant/lib/vant-css/button.css';
+import Button from 'vant';
 Vue.use(Button);
 
 @Component
