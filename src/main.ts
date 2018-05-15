@@ -5,6 +5,8 @@ import router from './routers';
 import Vuex from 'vuex';
 import store from './store/store';
 // UI Lib
+// import Vant from 'vant';
+// Vue.use(Vant);
 // Polyfills
 import 'babel-polyfill';
 // Service Worker

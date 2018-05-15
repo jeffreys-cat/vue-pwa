@@ -17,7 +17,7 @@ const commonConfig = {
     resolve: {
         extensions: ['*', '.ts', '.tsx', '.js', '.vue', 'json'],
         alias: {
-            vue: 'vue/dist/vue.js'
+            vue$: 'vue/dist/vue.js'
         }
     },
     optimization: {
@@ -43,35 +43,20 @@ const commonConfig = {
                 loader: 'ts-loader',
                 exclude: helpers.root('node_modules'),
                 options: {
-                    appendTsSuffixTo: [/\.vue$/],
+                    appendTsSuffixTo: [/\.vue$/]
                 }
-            },
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                include: helpers.root('src'),
-                exclude: /node_modules/
             },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                 loader: 'file-loader?name=assets/[name].[hash].[ext]'
             },
-            // vendor
             {
                 test: /\.css$/,
-                exclude: [helpers.root('src')],
-                use: extractCss.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader']
-                })
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" }
+                ]
             },
-            // src/**/*.css
-            {
-                test: /\.css$/,
-                include: [helpers.root('src/assets')],
-                loaders: ['style-loader', 'css-loader']
-            },
-            // src/scss合并到js中
             {
                 test: /\.(scss|sass)$/,
                 exclude: helpers.root('node_modules'),

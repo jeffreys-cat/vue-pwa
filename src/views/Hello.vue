@@ -2,17 +2,23 @@
     <div class="hello">
         <h4>Here is {{pageName}} page!</h4>
         <section>
-            <button class="hello-button" @click="decrement()">-</button>
-                <span>{{counter}}</span>
-            <button class="hello-button" @click="increment()">+</button>
+            <van-button size="large" type="default" @click="decrement()">-</van-button>
+                <span class="counter">{{counter}}</span>
+            <van-button size="large" type="default" @click="increment()">+</van-button>
         </section>
     </div>
 </template>
 
 <script lang="ts">
+
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { mapGetters } from 'vuex';
+// Button
+import Button from 'vant';
+import 'vant/lib/vant-css/base.css';
+import 'vant/lib/vant-css/button.css';
+Vue.use(Button);
 
 @Component
 export default class Hello extends Vue {
@@ -48,7 +54,6 @@ export default class Hello extends Vue {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     .hello {
         section {
@@ -56,6 +61,9 @@ export default class Hello extends Vue {
             justify-content: space-between;
             width: 50%;
             margin: 0 auto;
+        }
+        .counter {
+            padding: 0 20px;
         }
         .hello-button {
             display: block;

@@ -8,7 +8,7 @@
   "scripts": {
     "start": "webpack-dev-server --open --progress",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
-    "bundle-report": "cross-env NODE_ENV=bundle-report webpack-dev-server --inline --progress --port 8080"
+    "report": "cross-env NODE_ENV=bundle-report webpack-dev-server --inline --progress --port 8090"
   },
   "license": "MIT",
   "devDependencies": {
@@ -30,6 +30,7 @@
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.2",
+    "ts-import-plugin": "^1.4.4",
     "ts-loader": "^4.2.0",
     "tslint": "^5.9.1",
     "tslint-config-standard": "^7.0.0",
@@ -47,6 +48,7 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "rxjs": "^5.5.10",
+    "vant": "^1.0.4",
     "vue": "^2.5.13",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^6.0.0",
