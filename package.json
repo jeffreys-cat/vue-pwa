@@ -8,7 +8,7 @@
   "scripts": {
     "start": "webpack-dev-server --open --progress",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
-    "bundle-report": "cross-env NODE_ENV=bundle-report webpack-dev-server --inline --progress --port 8080"
+    "report": "cross-env NODE_ENV=bundle-report webpack-dev-server --inline --progress --port 8090"
   },
   "license": "MIT",
   "devDependencies": {
