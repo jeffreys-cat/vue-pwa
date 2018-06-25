@@ -7,6 +7,9 @@ const path = require('path');
 const fs = require('fs');
 const OfflinePlugin = require('offline-plugin');
 
+console.log(path.resolve(__dirname));
+
+
 const extractSass = new ExtractTextPlugin('[name].[hash].css');
 const extractCss = new ExtractTextPlugin('[name].[hash].css');
 
@@ -19,12 +22,6 @@ const commonConfig = {
         alias: {
             vue$: 'vue/dist/vue.js'
         }
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-            name: true
-        },
     },
     module: {
         rules: [

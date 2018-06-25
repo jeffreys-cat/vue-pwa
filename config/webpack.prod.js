@@ -16,7 +16,14 @@ module.exports = webpackMerge(commonConfig, {
         chunkFilename: '[id].[hash].chunk.js'
     },
     optimization: {
-        minimize: true
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'all'
+                }
+            }
+        }
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),

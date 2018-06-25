@@ -4,7 +4,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var commonConfig = require('./webpack.common.js');
 var helpers = require('./helpers');
-console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'bundle-report') {
     commonConfig.plugins.push(     // bundle analysis
