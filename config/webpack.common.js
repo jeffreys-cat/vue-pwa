@@ -23,6 +23,17 @@ const commonConfig = {
             vue$: 'vue/dist/vue.js'
         }
     },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'all',
+                    name: 'common'
+                }
+            }
+        }
+    },
     module: {
         rules: [
             {
