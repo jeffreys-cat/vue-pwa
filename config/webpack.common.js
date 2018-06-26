@@ -1,17 +1,8 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const helpers = require('./helpers');
-const path = require('path');
-const fs = require('fs');
 const OfflinePlugin = require('offline-plugin');
-
-console.log(path.resolve(__dirname));
-
-
-const extractSass = new ExtractTextPlugin('[name].[hash].css');
-const extractCss = new ExtractTextPlugin('[name].[hash].css');
 
 const commonConfig = {
     entry: {
@@ -21,17 +12,6 @@ const commonConfig = {
         extensions: ['*', '.ts', '.tsx', '.js', '.vue', 'json'],
         alias: {
             vue$: 'vue/dist/vue.js'
-        }
-    },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    chunks: 'all',
-                    name: 'common'
-                }
-            }
         }
     },
     module: {
@@ -73,8 +53,6 @@ const commonConfig = {
         ]
     },
     plugins: [
-        // array id
-        new webpack.optimize.OccurrenceOrderPlugin(),
 
         new CopyWebpackPlugin([{
             from: './static/**',
@@ -86,6 +64,10 @@ const commonConfig = {
             filename: 'index.html',
             template: 'index.html',
             inject: true
+        }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('../static/manifest-vendor.json'),
         }),
         // for PWA
         new OfflinePlugin({
