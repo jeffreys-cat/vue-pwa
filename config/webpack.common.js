@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const helpers = require('./helpers');
 const OfflinePlugin = require('offline-plugin');
+const DllLinkPlugin = require("dll-link-webpack-plugin");
 
 const commonConfig = {
     entry: {
@@ -65,9 +66,11 @@ const commonConfig = {
             template: 'index.html',
             inject: true
         }),
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: require('../static/manifest-vendor.json'),
+        new DllLinkPlugin({
+            config: require('./webpack.dll.js'),
+            appendVersion: true,
+            assetsMode: true,
+            htmlMode: true,
         }),
         // for PWA
         new OfflinePlugin({
