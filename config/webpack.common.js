@@ -1,14 +1,9 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const helpers = require('./helpers');
-const path = require('path');
-const fs = require('fs');
 const OfflinePlugin = require('offline-plugin');
-
-const extractSass = new ExtractTextPlugin('[name].[hash].css');
-const extractCss = new ExtractTextPlugin('[name].[hash].css');
+const DllLinkPlugin = require("dll-link-webpack-plugin");
 
 const commonConfig = {
     entry: {
@@ -19,12 +14,6 @@ const commonConfig = {
         alias: {
             vue$: 'vue/dist/vue.js'
         }
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-            name: true
-        },
     },
     module: {
         rules: [
@@ -65,8 +54,6 @@ const commonConfig = {
         ]
     },
     plugins: [
-        // array id
-        new webpack.optimize.OccurrenceOrderPlugin(),
 
         new CopyWebpackPlugin([{
             from: './static/**',
@@ -78,6 +65,12 @@ const commonConfig = {
             filename: 'index.html',
             template: 'index.html',
             inject: true
+        }),
+        new DllLinkPlugin({
+            config: require('./webpack.dll.js'),
+            appendVersion: true,
+            assetsMode: true,
+            htmlMode: true,
         }),
         // for PWA
         new OfflinePlugin({

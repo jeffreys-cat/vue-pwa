@@ -32,6 +32,10 @@ export default new Router({
             component: Home,
             children: [
                 {
+                    path: '/',
+                    redirect: 'hello'
+                },
+                {
                     path: 'hello',
                     alias: '/',
                     component: Hello,

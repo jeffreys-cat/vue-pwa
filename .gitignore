@@ -15,3 +15,6 @@ selenium-debug.log
 *.njsproj
 *.sln
 .history
+
+# Webpack Plugin
+.dll-link-plugin

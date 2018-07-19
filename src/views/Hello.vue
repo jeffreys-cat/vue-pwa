@@ -2,9 +2,11 @@
     <div class="hello">
         <h4>Here is {{pageName}} page!</h4>
         <section>
-            <van-button size="large" type="default" @click="decrement()">-</van-button>
+            <!-- <van-button size="large" type="default" @click="decrement()">-</van-button> -->
+            <button @click="decrement()">-</button>
                 <span class="counter">{{counter}}</span>
-            <van-button size="large" type="default" @click="increment()">+</van-button>
+            <button @click="increment()">+</button>
+            <!-- <van-button size="large" type="default" @click="increment()">+</van-button> -->
         </section>
     </div>
 </template>
@@ -15,10 +17,10 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { mapGetters } from 'vuex';
 // Button
-import Button from 'vant';
-import 'vant/lib/vant-css/base.css';
-import 'vant/lib/vant-css/button.css';
-Vue.use(Button);
+// import Button from 'vant';
+// import 'vant/lib/vant-css/base.css';
+// import 'vant/lib/vant-css/button.css';
+// Vue.use(Button);
 
 @Component
 export default class Hello extends Vue {
