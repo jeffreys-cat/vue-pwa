@@ -33,21 +33,7 @@ module.exports = webpackMerge(commonConfig, {
         chunkFilename: '[id].chunk.js'
     },
 
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    chunks: 'all',
-                    name: 'common'
-                }
-            }
-        },
-        minimize: false
-    },
-
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 url: JSON.stringify('http://www.apitest.com/'),
@@ -60,7 +46,6 @@ module.exports = webpackMerge(commonConfig, {
         historyApiFallback: true,
         stats: 'minimal',
         compress: true,
-        hot: true,
         contentBase: helpers.root('dist')
     }
 });

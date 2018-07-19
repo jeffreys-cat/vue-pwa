@@ -17,7 +17,7 @@ module.exports = {
     mode: 'production',
     output: {
         path: helpers.root('static'),
-        filename: '[name].dll.js',
+        filename: '[name].[chunkhash].dll.js',
         library: '[name]_[chunkhash]',
     },
     entry: {

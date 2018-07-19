@@ -24,12 +24,10 @@ if (process.env.NODE_ENV === 'bundle-report') {
 
 module.exports = webpackMerge(commonConfig, {
     mode: 'production',
-    devtool: 'source-map',
-
     output: {
         path: helpers.root('dist'),
-        filename: '[name].[hash].js',
-        chunkFilename: '[id].[hash].chunk.js'
+        filename: '[name].[chunkhash].js',
+        chunkFilename: '[id].[chunkhash].chunk.js'
     },
     optimization: {
         splitChunks: {

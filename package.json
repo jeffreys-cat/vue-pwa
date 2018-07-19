@@ -6,7 +6,7 @@
   "repository": "git@github.com:colordove/vue-example.git",
   "author": "HuJian <hujian201@gmail.com>",
   "scripts": {
-    "start": "webpack-dev-server --open --progress --profile --bail",
+    "start": "webpack-dev-server --open --progress --profile --bail --hot",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
     "dll": "webpack --config config/webpack.dll.js",
     "report": "cross-env NODE_ENV=bundle-report yarn run build"
