@@ -3,6 +3,7 @@
         <div class="links">
             <router-link to="hello" tag="li">Hello</router-link>
             <router-link to="About" tag="li">About</router-link>
+            <router-link to="Search" tag="li">Search</router-link>
         </div>
         <router-view></router-view>
     </div>
