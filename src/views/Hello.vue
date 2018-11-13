@@ -11,14 +11,14 @@
 
 <script lang="ts">
 
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mapGetters } from 'vuex';
 
 @Component
 export default class Hello extends Vue {
     pageName = 'Hello';
     counter = 0;
+    @Prop() message: string = 'world';
 
     get mapGetters() {
         return {

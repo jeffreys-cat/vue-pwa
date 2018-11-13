@@ -3,7 +3,6 @@
         "node_modules",
         "dist",
     ],
-    "include": [ "*.ts", ],
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true,
