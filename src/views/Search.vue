@@ -1,32 +1,21 @@
 <template>
     <div class="search">
-        <section class="search-section">
-            <input placeholder="输入" />
-        </section>
+        <h4>Here is {{name}} page!</h4>
     </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
     import Vue from 'vue';
-    import Component from 'vue-class-component';
 
-    @Component
-    export default class Search extends Vue {
-        name = 'search';
+    export default {
+        data() {
+            return {
+                name: 'Search',
+            };
+        }
     };
 
 </script>
 
 <style lang="scss" scoped>
-    .search {
-        .search-section {
-            margin-top: 20px;
-            width: 632px;
-            input {
-                border: 1px solid #ccc;
-                border-radius: 3px;
-                padding: 4px 8px;
-            }
-        }
-    }
 </style>
