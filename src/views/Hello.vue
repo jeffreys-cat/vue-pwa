@@ -18,7 +18,7 @@ import { mapGetters } from 'vuex';
 export default class Hello extends Vue {
     pageName = 'Hello';
     counter = 0;
-    @Prop() message: string = 'world';
+    // @Prop() message: string = '';
 
     get mapGetters() {
         return {
