@@ -1,3 +1,7 @@
 language: node_js
+node_js:
+  - "8"
 sudo: enabled
+before_install:
+  - sudo npm install
 script: npm run build
