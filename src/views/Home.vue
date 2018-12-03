@@ -1,8 +1,9 @@
 <template>
     <div class="home">
-        <div class="links">
+        <div class="links" ref="links">
             <router-link to="hello" tag="li">Hello</router-link>
             <router-link to="About" tag="li">About</router-link>
+            <router-link to="Search" tag="li">Search</router-link>
         </div>
         <router-view></router-view>
     </div>
@@ -15,8 +16,13 @@
     @Component
     export default class Home extends Vue {
         name = 'hello';
+        $refs!: {
+            links: HTMLElement;
+        }
+        mounted() {
+            console.log((this.$refs.links as HTMLElement).style);
+        }
     };
-
 </script>
 
 <style lang="scss" scoped>

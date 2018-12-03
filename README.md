@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/colordove/vue-pwa.svg?branch=master)](https://travis-ci.org/colordove/vue-pwa.svg?branch=master)
+
 # vue-pwa-typescript
 A simple vue example with typescript, support pwa by webpack `offline plugin`.
 

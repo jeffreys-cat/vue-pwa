@@ -2,30 +2,23 @@
     <div class="hello">
         <h4>Here is {{pageName}} page!</h4>
         <section>
-            <!-- <van-button size="large" type="default" @click="decrement()">-</van-button> -->
             <button @click="decrement()">-</button>
                 <span class="counter">{{counter}}</span>
             <button @click="increment()">+</button>
-            <!-- <van-button size="large" type="default" @click="increment()">+</van-button> -->
         </section>
     </div>
 </template>
 
 <script lang="ts">
 
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mapGetters } from 'vuex';
-// Button
-// import Button from 'vant';
-// import 'vant/lib/vant-css/base.css';
-// import 'vant/lib/vant-css/button.css';
-// Vue.use(Button);
 
 @Component
 export default class Hello extends Vue {
     pageName = 'Hello';
     counter = 0;
+    // @Prop() message: string = '';
 
     get mapGetters() {
         return {

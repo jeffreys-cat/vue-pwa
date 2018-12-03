@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Hello from './views/Hello.vue';
 import NotFound from './views/NotFound.vue';
+import Search from './views/Search.vue';
 // import About from './views/About.vue';
 
 /**
@@ -48,6 +49,13 @@ export default new Router({
                     component: About,
                     meta: {
                         title: 'about'
+                    }
+                },
+                {
+                    path: 'search',
+                    component: Search,
+                    meta: {
+                        title: 'search'
                     }
                 },
             ]

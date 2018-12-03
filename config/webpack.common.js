@@ -22,6 +22,12 @@ const commonConfig = {
                 loader: 'vue-loader'
             },
             {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                include: helpers.root('src'),
+                exclude: /node_modules/
+            },
+            {
                 test: /\.ts$/,
                 exclude: [helpers.root('node_modules'), helpers.root('src', 'main.ts')],
                 enforce: 'pre',
