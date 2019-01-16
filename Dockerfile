@@ -1,5 +1,5 @@
-FROM nginx
+FROM nginx:latest
 LABEL colordove <color.dove@gmail.com>
-RUN rm /etc/nginx/conf.d/nginx.conf
-COPY nginx.conf /etc/nginx/conf.d/
-COPY dist/**  /usr/share/nginx/html/vue-pwa
+ADD ./dist/ /usr/share/nginx/html/vue-pwa
+ADD nginx.conf /etc/nginx/
+EXPOSE 80
