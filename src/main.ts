@@ -9,12 +9,7 @@ import 'babel-polyfill';
 // Service Worker
 import { registerServiceWorker } from './registerServiceWorker';
 registerServiceWorker();
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-// import VueLazyload from 'vue-lazyload'
-// require styles
-import 'swiper/dist/css/swiper.css'
-// Vue.use(VueLazyload)
-Vue.use(VueAwesomeSwiper, /* { default global options } */)
+
 new Vue({
     el: '#app',
     router,

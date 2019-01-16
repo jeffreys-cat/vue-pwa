@@ -7,8 +7,4 @@ before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
 cache:
   yarn: true
-script:
-  - yarn run build
-  - codecov -f coverage/*.json
-after_success:
-  - codecov
+script: yarn run build

@@ -6,26 +6,6 @@
                 <span class="counter">{{counter}}</span>
             <button @click="increment()">+</button>
         </section>
-        <swiper ref="mySwiper">
-            <!-- slides -->
-            <swiper-slide>I'm Slide 1</swiper-slide>
-            <swiper-slide>I'm Slide 2</swiper-slide>
-            <swiper-slide>I'm Slide 3</swiper-slide>
-            <swiper-slide>I'm Slide 4</swiper-slide>
-            <swiper-slide>I'm Slide 5</swiper-slide>
-            <swiper-slide>I'm Slide 6</swiper-slide>
-            <swiper-slide>I'm Slide 7</swiper-slide>
-            <!-- Optional controls -->
-            <div class="swiper-pagination"  slot="pagination"></div>
-            <div class="swiper-button-prev" slot="button-prev"></div>
-            <div class="swiper-button-next" slot="button-next"></div>
-            <div class="swiper-scrollbar"   slot="scrollbar"></div>
-        </swiper>
-        <!-- <ul>
-            <li v-for="img in list">
-                <img v-lazy="img.src" >
-            </li>
-        </ul> -->
     </div>
 </template>
 
@@ -38,16 +18,6 @@ import { mapGetters } from 'vuex';
 export default class Hello extends Vue {
     pageName = 'Hello';
     counter = 0;
-    swiperOption = {
-        // some swiper options/callbacks
-        // 所有的参数同 swiper 官方 api 参数
-        // ...
-    }
-    list = [
-        {
-            src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546490622326&di=12ecb6b573faad0454ffa11d41759bf4&imgtype=0&src=http%3A%2F%2Fpic44.photophoto.cn%2F20170719%2F0012024451690249_b.jpg'
-        }
-    ]
     // @Prop() message: string = '';
 
     get mapGetters() {
