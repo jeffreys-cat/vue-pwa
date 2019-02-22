@@ -16,7 +16,7 @@ const vendors = [
 module.exports = {
     mode: 'production',
     output: {
-        path: helpers.root('static'),
+        path: helpers.root('dist'),
         filename: '[name].[chunkhash].dll.js',
         library: '[name]_[chunkhash]',
     },
@@ -25,7 +25,7 @@ module.exports = {
     },
     plugins: [
         new webpack.DllPlugin({
-            path: helpers.root('static', 'manifest-vendor.json'),
+            path: helpers.root('dist', 'manifest-vendor.json'),
             name: '[name]_[chunkhash]',
             context: __dirname,
         }),
