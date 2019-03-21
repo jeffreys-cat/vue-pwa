@@ -1,7 +1,7 @@
 FROM node:11-alpine as build-deps
 WORKDIR /app
 COPY . .
-RUN npm && npm build
+RUN npm run build
 
 FROM nginx:latest
 LABEL colordove <color.dove@gmail.com>
