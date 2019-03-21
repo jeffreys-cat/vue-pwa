@@ -1,6 +1,11 @@
+FROM node:11-alpine as build-deps
+WORKDIR /app
+COPY . .
+RUN npm && npm build
+
 FROM nginx:latest
 LABEL colordove <color.dove@gmail.com>
-ADD ./dist/ /usr/share/nginx/html/vue-pwa
-ADD nginx.conf /etc/nginx/
+COPY ./dist/** /usr/share/nginx/html/vue-pwa/
+COPY nginx.conf /etc/nginx/
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
