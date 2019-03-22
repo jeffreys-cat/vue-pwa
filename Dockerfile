@@ -21,12 +21,20 @@ EXPOSE 80
 # 删除目录文件
 RUN  npm install \
      && npm run build \ 
+     && echo "BUILD SUCCESS" \
+     && pwd \
      && cd /var/www/ \
+     && echo "ENTER NGINX DIR" \
      && rm -rf vue-pwa \
+     && echo "DELETE DIR vue-pwa" \
      && mkdir vue-pwa \
-     cd /app \
-     && cp -r dist/** /var/www/vue-pwa/ \     
-     && rm -rf /app
+     && echo "CREATE DIR vue-pwa" \
+     && cd /app \
+     && echo "ENTER WORDDIR" \
+     && cp -r dist/** /var/www/vue-pwa/ \    
+     && echo "CP DIST FILES" \ 
+     && rm -rf /app \
+     && echo "DELETE WORDDIR"
 
 # 以前台形式启动ng
 CMD ["nginx","-g","daemon off;"]
