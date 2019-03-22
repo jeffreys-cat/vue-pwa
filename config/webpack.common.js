@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const helpers = require('./helpers');
 const OfflinePlugin = require('offline-plugin');
 const DllLinkPlugin = require("dll-link-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const commonConfig = {
     entry: {
@@ -27,12 +28,12 @@ const commonConfig = {
                 include: helpers.root('src'),
                 exclude: /node_modules/
             },
-            {
-                test: /\.ts$/,
-                exclude: [helpers.root('node_modules'), helpers.root('src', 'main.ts')],
-                enforce: 'pre',
-                loader: 'tslint-loader'
-            },
+            // {
+            //     test: /\.ts$/,
+            //     exclude: [helpers.root('node_modules'), helpers.root('src', 'main.ts')],
+            //     enforce: 'pre',
+            //     loader: 'tslint-loader'
+            // },
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
@@ -48,6 +49,7 @@ const commonConfig = {
             {
                 test: /\.css$/,
                 use: [
+                    { loader: 'vue-style-loader'},
                     { loader: "style-loader" },
                     { loader: "css-loader" }
                 ]
@@ -55,11 +57,17 @@ const commonConfig = {
             {
                 test: /\.(scss|sass)$/,
                 exclude: helpers.root('node_modules'),
-                loader: 'raw-loader!sass-loader'
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
             }
         ]
     },
     plugins: [
+
+        new VueLoaderPlugin(),
 
         new CopyWebpackPlugin([{
             from: './static/**',

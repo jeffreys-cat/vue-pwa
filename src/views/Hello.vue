@@ -6,26 +6,18 @@
                 <span class="counter">{{counter}}</span>
             <button @click="increment()">+</button>
         </section>
-        <swiper ref="mySwiper">
+        <swiper :options="swiperOption" ref="mySwiper" class="swiper">
             <!-- slides -->
-            <swiper-slide>I'm Slide 1</swiper-slide>
-            <swiper-slide>I'm Slide 2</swiper-slide>
-            <swiper-slide>I'm Slide 3</swiper-slide>
-            <swiper-slide>I'm Slide 4</swiper-slide>
-            <swiper-slide>I'm Slide 5</swiper-slide>
-            <swiper-slide>I'm Slide 6</swiper-slide>
-            <swiper-slide>I'm Slide 7</swiper-slide>
+            <swiper-slide>
+                <div class="slide">I'm Slide 1</div>
+            </swiper-slide>
+            <swiper-slide>
+                <div class="slide">I'm Slide 2</div>
+            </swiper-slide>
             <!-- Optional controls -->
-            <div class="swiper-pagination"  slot="pagination"></div>
             <div class="swiper-button-prev" slot="button-prev"></div>
             <div class="swiper-button-next" slot="button-next"></div>
-            <div class="swiper-scrollbar"   slot="scrollbar"></div>
         </swiper>
-        <!-- <ul>
-            <li v-for="img in list">
-                <img v-lazy="img.src" >
-            </li>
-        </ul> -->
     </div>
 </template>
 
@@ -39,9 +31,10 @@ export default class Hello extends Vue {
     pageName = 'Hello';
     counter = 0;
     swiperOption = {
-        // some swiper options/callbacks
-        // 所有的参数同 swiper 官方 api 参数
-        // ...
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        }
     }
     list = [
         {
@@ -103,6 +96,16 @@ export default class Hello extends Vue {
             box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
             line-height: 40px;
             font-size: 1.4rem;
+        }
+        .swiper {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            .slide {
+                max-width: 600px;
+                height: 400px;
+                line-height: 400px;
+            }
         }
     }
 </style>
