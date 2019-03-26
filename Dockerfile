@@ -11,11 +11,11 @@ RUN  npm install \
 # STAGE2	 
 FROM nginx:1.15.9-alpine
 	
-RUN  cd /var/www/ \
+RUN  cd /usr/share/nginx/html \
      && rm -rf vue-pwa \
      && mkdir vue-pwa
 	 
-COPY --from=stage1 /app/dist/** /var/www/vue-pwa/
+COPY --from=stage1 /app/dist/** /usr/share/nginx/html/
 COPY --from=stage1 /app/dist/config/vue-pwa.nginx.conf /etc/nginx/conf/
 
 EXPOSE 80
