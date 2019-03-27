@@ -1,0 +1,10 @@
+version: '1.2.2'
+
+services:
+  vue-pwa:
+    image: vue-pwa
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 80:80
