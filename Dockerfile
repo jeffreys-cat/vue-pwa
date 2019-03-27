@@ -16,7 +16,7 @@ RUN  cd /usr/share/nginx/html \
      && mkdir vue-pwa
 	 
 COPY --from=stage1 /app/dist/** /usr/share/nginx/html/
-COPY --from=stage1 /app/dist/config/vue-pwa.nginx.conf /etc/nginx/conf/
+COPY --from=stage1 /app/dist/config/vue-pwa.nginx.conf /etc/nginx/conf.d/
 
 EXPOSE 80
 CMD ["nginx","-g","daemon off;"]
